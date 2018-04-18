@@ -115,8 +115,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Programs\app1.cpp" />
-    <ClCompile Include="Programs\bubbleSort.cpp" />
+    <ClCompile Include="Programs\Sorting\bubbleSort.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
