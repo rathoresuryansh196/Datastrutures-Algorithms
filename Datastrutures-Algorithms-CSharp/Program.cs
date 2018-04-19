@@ -8,8 +8,8 @@ namespace Datastrutures_Algorithms_CSharp
 {
     class Program
     {
-        static void Main(string[] args)
-        {
-        }
+        //static void Main(string[] args)
+        //{
+        //}
     }
 }
