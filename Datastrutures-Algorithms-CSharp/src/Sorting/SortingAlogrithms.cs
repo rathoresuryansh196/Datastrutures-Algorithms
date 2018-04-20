@@ -268,7 +268,7 @@ namespace Datastrutures_Algorithms_CSharp.Sorting
         {
             try
             {
-                Console.Clear();
+                Console.Clear();    
                 Console.WriteLine("Selected quick sort.");
                 int[] numbersToBeSorted = Common.Utils.Sort();
 
