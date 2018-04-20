@@ -150,19 +150,116 @@ namespace Datastrutures_Algorithms_CSharp.Sorting
             {
                 Console.Clear();
                 Console.WriteLine("Selected merge sort.");
-                //int[] numbersToBeSorted = Common.Utils.Sort();
-                int[] leftSorted = Common.Utils.Sort();
-                int[] rightSorted = Common.Utils.Sort();
 
 
-                Console.WriteLine("Numbers after sorting with merge sort");
-                Common.Utils.PrintIntArray(leftSorted);
-                Common.Utils.PrintIntArray(rightSorted);
+                //    if (mid <= totalLength) { j++; mid++; }
+                //}
+                int[] numbersToBeSorted = Common.Utils.Sort();
+                spiltUnsortedNumbers(numbersToBeSorted);
+
+
+                //Console.WriteLine("Numbers after sorting with merge sort");
+                // Common.Utils.PrintIntArray(numbersToBeSorted);
+                // Common.Utils.PrintIntArray(rightSorted);
 
             }
             catch (Exception e)
             {
                 Common.Utils.ExceptionHandleMsg(TAG, "Excpetion handled when trying to sort using merge sort", e);
+            }
+        }
+
+
+        public static void mergeSortedHalves(int[] leftSorted, int[] rightSorted, int[] numbersToBeSorted)
+        {
+            try
+            {
+                //int[] leftSorted = Common.Utils.Sort();
+                //int[] rightSorted = Common.Utils.Sort();
+                //int[] numbersToBeSorted = new int[leftSorted.Length + rightSorted.Length];
+
+                int i = 0, j = 0, k = 0;//indexes
+
+                while (i < leftSorted.Length && j < rightSorted.Length)
+                {
+                    if (leftSorted[i] <= rightSorted[j])
+                    {
+                        numbersToBeSorted[k] = leftSorted[i];
+                        i++;
+                    }
+                    else
+                    {
+                        numbersToBeSorted[k] = rightSorted[j];
+                        j++;
+                    }
+                    k++;
+
+                }
+
+                while (i < leftSorted.Length)
+                {
+                    numbersToBeSorted[k] = leftSorted[i];
+                    i++; k++;
+                }
+
+                while (j < rightSorted.Length)
+                {
+                    numbersToBeSorted[k] = rightSorted[j];
+                    j++; k++;
+                }
+
+                Console.WriteLine("Numbers after sorting with merge sort");
+                Common.Utils.PrintIntArray(numbersToBeSorted);
+            }
+            catch (Exception e)
+            {
+                Common.Utils.ExceptionHandleMsg(TAG, "Excpetion handled when trying to join two sorted halves using merge sort", e);
+            }
+        }
+
+        public static void spiltUnsortedNumbers(int[] numbersToBeSorted)
+        {
+
+            try {
+                
+                int totalLength = numbersToBeSorted.Length;
+
+                int leftHalfLength = totalLength / 2;
+                int rightHalfLength = totalLength - leftHalfLength;
+                if (totalLength < 2) return;
+                int[] leftUnsorted = new int[leftHalfLength];
+                int[] rightUnsorted = new int[rightHalfLength];
+
+                int mid = totalLength / 2;// - leftHalfLength;
+                int i = 0, k;
+
+                if (totalLength % 2 == 0)
+                {
+                    k = totalLength - leftHalfLength;
+                }
+                else k = totalLength - leftHalfLength - 1;
+
+                while (i < leftHalfLength)
+                {
+                    leftUnsorted[i] = numbersToBeSorted[i];
+                    i++;
+                }
+                // Common.Utils.PrintIntArray(leftUnsorted);
+
+                int j = 0;
+                while (j < rightHalfLength)
+                {
+                    rightUnsorted[j] = numbersToBeSorted[k];
+                    j++; k++;
+                }
+                // Common.Utils.PrintIntArray(rightUnsorted);
+                spiltUnsortedNumbers(leftUnsorted);
+                spiltUnsortedNumbers(rightUnsorted);
+                mergeSortedHalves(leftUnsorted, rightUnsorted, numbersToBeSorted);
+            }
+            catch (Exception e)
+            {
+                Common.Utils.ExceptionHandleMsg(TAG, "Excpetion handled when trying to spilt the havles and sort using merge sort", e);
             }
         }
         #endregion
