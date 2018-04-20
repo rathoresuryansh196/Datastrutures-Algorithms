@@ -22,6 +22,15 @@ namespace Datastrutures_Algorithms_CSharp.Sorting
                     case 2:
                         SortingAlogrithms.SelectionSort();
                         break;
+                    case 3:
+                        SortingAlogrithms.InsertionSort();
+                        break;
+                    case 4:
+                        SortingAlogrithms.MergeSort();
+                        break;
+                    case 5:
+                        SortingAlogrithms.QuickSort();
+                        break;
                     default:
                         Console.Clear();
                         Console.WriteLine("Please select the number within range");
@@ -46,7 +55,6 @@ namespace Datastrutures_Algorithms_CSharp.Sorting
                 Console.WriteLine("3.Insertion sort");
                 Console.WriteLine("4.Merge sort");
                 Console.WriteLine("5.Quick sort");
-                Console.WriteLine("6.Heap sort");
                 string num = Console.ReadLine();
                 int num1;
                 Int32.TryParse(num, out num1);

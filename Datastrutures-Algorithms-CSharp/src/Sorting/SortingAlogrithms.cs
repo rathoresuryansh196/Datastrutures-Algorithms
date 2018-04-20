@@ -55,24 +55,25 @@ namespace Datastrutures_Algorithms_CSharp.Sorting
                 Console.Clear();
                 Console.WriteLine("Selected selection sort.");
                 int[] numbersToBeSorted = Common.Utils.Sort();
-                int lowestNum;
+                int biggestNum;
 
                 for (int i = 0; i < numbersToBeSorted.Length; i++)
                 {
-                    lowestNum = i;
+                    biggestNum = i;
                     Console.WriteLine("Array length: " + numbersToBeSorted.Length);
                     Console.WriteLine("Iterating loop number: " + i);
-                    for (int j = 0; j < numbersToBeSorted.Length-1 ; j++)
+                    for (int j = 0; j < numbersToBeSorted.Length ; j++)
                     {
-                        Console.WriteLine("Comparing " + numbersToBeSorted[j] + " with " + numbersToBeSorted[j + 1]);
-                        if (numbersToBeSorted[j] > numbersToBeSorted[lowestNum])
+                        Console.WriteLine("Comparing " + numbersToBeSorted[j] + " with " + numbersToBeSorted[biggestNum]);
+                        if (numbersToBeSorted[biggestNum]<numbersToBeSorted[j]  )
                         {
-                            lowestNum = j;
-                            Console.WriteLine("New minimum is " + numbersToBeSorted[j]);
+                            
+                            biggestNum = j;
+                            Console.WriteLine("New max is " + numbersToBeSorted[j]);
                         }
-                        int temp = numbersToBeSorted[lowestNum];
-                        numbersToBeSorted[lowestNum] = numbersToBeSorted[i];
-                        numbersToBeSorted[i] = temp;
+                        int temp = numbersToBeSorted[i];
+                        numbersToBeSorted[i] = numbersToBeSorted[biggestNum];
+                        numbersToBeSorted[biggestNum] = temp;
                         Common.Utils.PrintIntArray(numbersToBeSorted);
                     }
                 }
@@ -97,12 +98,44 @@ namespace Datastrutures_Algorithms_CSharp.Sorting
                 Console.WriteLine("Selected insertion sort.");
                 int[] numbersToBeSorted = Common.Utils.Sort();
 
+                int N = numbersToBeSorted.Length;
+                for (int i = 1; i < N; i++)
+                {
+                    int value= numbersToBeSorted[i];
+                    int holePos = i-1;
+                    //int j = i - 1;
+                    while ((holePos >= 0) && (numbersToBeSorted[holePos] > value))
+                    {
+                        numbersToBeSorted[holePos + 1] = numbersToBeSorted[holePos];
+                        holePos--;
+                    }
+                    numbersToBeSorted[holePos + 1] = value;
+                    Common.Utils.PrintIntArray(numbersToBeSorted);
+                }
 
                 Console.WriteLine("Numbers after sorting with insertion sort");
                 Common.Utils.PrintIntArray(numbersToBeSorted);
 
 
+                //for (int i = 1; i < N; i++)
+                //{
+                //    int j = i - 1;
+                //    int temp = numbersToBeSorted[i];
+
+                //    while (j >= 0 && temp < numbersToBeSorted[j])
+                //    {
+                //        numbersToBeSorted[j + 1] = numbersToBeSorted[j];
+                //        j--; ;
+                //    }
+
+                //    numbersToBeSorted[j + 1] = temp;
+                //    Console.Write("After pass " + i + "  : ");
+                //    //Printing array after pass
+                //    Console.WriteLine(String.Join(" ", numbersToBeSorted));
+                //}
             }
+
+            
             catch (Exception e)
             {
                 Common.Utils.ExceptionHandleMsg(TAG, "Excpetion handled when trying to sort using insertion sort" , e);
@@ -117,12 +150,14 @@ namespace Datastrutures_Algorithms_CSharp.Sorting
             {
                 Console.Clear();
                 Console.WriteLine("Selected merge sort.");
-                int[] numbersToBeSorted = Common.Utils.Sort();
+                //int[] numbersToBeSorted = Common.Utils.Sort();
+                int[] leftSorted = Common.Utils.Sort();
+                int[] rightSorted = Common.Utils.Sort();
 
 
                 Console.WriteLine("Numbers after sorting with merge sort");
-                Common.Utils.PrintIntArray(numbersToBeSorted);
-
+                Common.Utils.PrintIntArray(leftSorted);
+                Common.Utils.PrintIntArray(rightSorted);
 
             }
             catch (Exception e)
