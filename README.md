@@ -11,5 +11,5 @@
 * For CPP/C implementation please visit Datastrutures-Algorithms-Java
 * For CPP/C implementation please visit Datastrutures-Algorithms-Python
 
-# All the code is written on Windows platform using Visual Stuido for CPP/C,C#,Python and Netbeans for Java
-# Project is still under development.
+* All the code is written on Windows platform using Visual Stuido for CPP/C,C#,Python and Netbeans for Java
+** Project is still under development.**
