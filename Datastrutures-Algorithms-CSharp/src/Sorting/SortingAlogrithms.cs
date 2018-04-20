@@ -272,6 +272,9 @@ namespace Datastrutures_Algorithms_CSharp.Sorting
                 Console.WriteLine("Selected quick sort.");
                 int[] numbersToBeSorted = Common.Utils.Sort();
 
+                int start = 0;
+                int end = numbersToBeSorted.Length-1;
+                QuickSortRecursion(numbersToBeSorted,start,end);
 
                 Console.WriteLine("Numbers after sorting with quick sort");
                 Common.Utils.PrintIntArray(numbersToBeSorted);
@@ -282,6 +285,81 @@ namespace Datastrutures_Algorithms_CSharp.Sorting
             {
                 Common.Utils.ExceptionHandleMsg(TAG, "Excpetion handled when trying to sort using quick sort", e);
             }
+        }
+
+        public static void QuickSortRecursion(int[] numbersToBeSorted,int start, int end)
+        {
+            try
+            {
+               //if (start >= end) return;
+                if(start < end)
+                {
+                    int pIndex = QuickSortPartition(numbersToBeSorted, start, end);
+                    QuickSortRecursion(numbersToBeSorted, start, pIndex - 1);
+                    QuickSortRecursion(numbersToBeSorted, pIndex + 1, end);
+                    //Console.Clear();
+                    //Console.WriteLine("Selected quick sort.");
+                    //int[] numbersToBeSorted = Common.Utils.Sort();
+
+                }
+                //Console.WriteLine("Numbers after sorting with quick sort");
+                //Common.Utils.PrintIntArray(numbersToBeSorted);
+                //return numbersToBeSorted;
+
+            }
+            catch (Exception e)
+            {
+                Common.Utils.ExceptionHandleMsg(TAG, "Excpetion handled when trying to sort using quick sort", e);
+               // return null;
+            }
+        }
+
+        public static int QuickSortPartition(int[] numbersToBeSorted, int start, int end)
+        {
+            try
+            {
+                int pivot= numbersToBeSorted[end];
+                int pIndex = start-1;
+
+                for (int i= start;i<end;i++)
+                {
+                    if (numbersToBeSorted[i] <= pivot)
+                    {
+                        pIndex++;
+                        int temp = numbersToBeSorted[pIndex];
+                        numbersToBeSorted[pIndex] = numbersToBeSorted[i];
+                        numbersToBeSorted[i] = temp;
+
+                    }
+
+                    int temp1 = numbersToBeSorted[pIndex];
+                    numbersToBeSorted[pIndex] = numbersToBeSorted[end];
+                    numbersToBeSorted[end] = temp1;
+
+                }
+                return pIndex+1;
+                //Console.Clear();
+                //Console.WriteLine("Selected quick sort.");
+                //int[] numbersToBeSorted = Common.Utils.Sort();
+
+
+                //Console.WriteLine("Numbers after sorting with quick sort");
+                //Common.Utils.PrintIntArray(numbersToBeSorted);
+
+
+            }
+            catch (Exception e)
+            {
+                Common.Utils.ExceptionHandleMsg(TAG, "Excpetion handled when trying to partiyion in quick sort", e);
+                return -1;
+            }
+        }
+
+        public static void Swap(int a,int b)
+        {
+            int temp = a;
+            a = b;
+            b = temp;
         }
         #endregion
         #region HEAP SORT
